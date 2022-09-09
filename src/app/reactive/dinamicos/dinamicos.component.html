@@ -1,1 +1,49 @@
-<p>dinamicos works!</p>
+<h2>Template: Dinámicos</h2>
+<hr>
+<form autocomplete="off" [formGroup]="miFormulario" (ngSubmit)="guardar()">
+    <div class="mb-3 row">
+        <label class="col-sm-2 col-form-label">Nombre</label>
+        <div class="col-sm-10">
+            <input formControlName="nombre" type="text" class="form-control" placeholder="Nombre de la persona...">
+            <span *ngIf="campoValido('nombre')" class="form-text text-danger">El nombre debe contener al menos 3 letras</span>
+        </div>
+    </div>
+
+    <div class="mb-3 col-form-label">
+        <div class="col">
+            <div class="input-group">
+                <input [formControl]="nuevoFavorito" (keyup.enter)="agregarFavorito()" class="form-control" placeholder="Agregar favorito...">
+                <button (click)="agregarFavorito()" class="btn btn-outline-primary" type="button">Agregar</button>
+            </div>
+            <span *ngIf="favoritoValido()" class="form-text text-danger">El juego debe contener al menos 3 letras</span>
+        </div>
+    </div>
+
+    <div class="mb-3 row">
+        <label *ngIf="!(favoritosArray.controls.length > 0)" class="col-sm-12 col-form-label">No hay juegos favoritos agregados.</label>
+        <label *ngIf="(favoritosArray.controls.length > 0)" class="col-sm-2 col-form-label">Favoritos</label>
+        <div class="col-sm-10" formArrayName="favoritos">
+            <div *ngFor="let favorito of favoritosArray.controls; let index = index" class="input-group mb-1">
+                <input class="form-control" [formControlName]="index">
+                <button (click)="borrar(index)" class="btn btn-outline-danger" type="button">Eliminar</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <button type="button" class="btn btn-primary float-end">Guardar</button>
+        </div>
+    </div>
+</form>
+
+<span>Valid</span>
+<pre>{{ miFormulario.valid }}</pre>
+<br>
+<span>Value</span>
+<pre>{{ miFormulario.value | json }}</pre>
+<span>Valid</span>
+<pre>{{ nuevoFavorito.valid }}</pre>
+<br>
+<span>Value</span>
+<pre>{{ nuevoFavorito.value | json }}</pre>

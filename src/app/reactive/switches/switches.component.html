@@ -1,1 +1,56 @@
-<p>switches works!</p>
+<h2>Template: Switches</h2>
+<hr>
+<form [formGroup]="miFormulario" (ngSubmit)="guardar()">
+    <div class="row mb-2">
+        <label class="col-sm-2 col-form-label">Género</label>
+        <div class="col-sm-10">
+            <div class="form-check">
+                <input formControlName="genero" value="Masculino" class="form-check-input" type="radio" id="radioMasculino">
+                <label class="form-check-label" for="radioMasculino">Masculino</label>
+            </div>
+            <div class="form-check">
+                <input formControlName="genero" value="Femenino" class="form-check-input" type="radio" id="radioFemenino">
+                <label class="form-check-label" for="radioFemenino">Femenino</label>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="row mb-2">
+        <label class="col-form-label col-sm-12">Notificaciones</label>
+        <div class="col-sm-12">
+            <div class="form-check form-switch">
+                <input formControlName="notificaciones" class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked">
+                <label class="form-check-label" for="flexSwitchCheckChecked">Quiero recibir notificaciones</label>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="row mb-2">
+        <label class="col-form-label col-sm-12">Términos y condiciones</label>
+        <div class="col-sm-12">
+            <div class="form-check">
+                <input formControlName="terminos" class="form-check-input" type="checkbox" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">Acepto los términos y condiciones</label>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col">
+            <button type="submit" class="btn btn-primary float-end">Guardar</button>
+        </div>
+    </div>
+</form>
+
+<h5>Valor del formulario:</h5>
+<pre>{{ miFormulario.value | json }}</pre>
+<br>
+<h5>Persona:</h5>
+<pre>{{ persona | json }}</pre>
+<br>
+<h5>Valid:</h5>
+<pre>{{ miFormulario.valid }}</pre>
+<br>
+<!-- <h5>Términos y condiciones:</h5>
+<pre>{{ miFormulario.controls['terminos']?.errors | json }}</pre>
+<br> -->

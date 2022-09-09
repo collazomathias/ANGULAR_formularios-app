@@ -1,1 +1,56 @@
-<p>switches works!</p>
+<h2>Template: Switches</h2>
+<hr>
+<form #miFormulario="ngForm">
+    <div class="row mb-2">
+        <label class="col-sm-2 col-form-label">Género</label>
+        <div class="col-sm-10">
+            <div class="form-check">
+                <input value="Masculino" [(ngModel)]="persona.genero" class="form-check-input" type="radio" name="radioGenero" id="radioMasculino" required>
+                <label class="form-check-label" for="radioMasculino">Masculino</label>
+            </div>
+            <div class="form-check">
+                <input value="Femenino" [(ngModel)]="persona.genero" class="form-check-input" type="radio" name="radioGenero" id="radioFemenino" required>
+                <label class="form-check-label" for="radioFemenino">Femenino</label>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="row mb-2">
+        <label class="col-form-label col-sm-12">Notificaciones</label>
+        <div class="col-sm-12">
+            <div class="form-check form-switch">
+                <input [(ngModel)]="persona.notificaciones" name="notificaciones" class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
+                <label class="form-check-label" for="flexSwitchCheckChecked">Quiero recibir notificaciones</label>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="row mb-2">
+        <label class="col-form-label col-sm-12">Términos y condiciones</label>
+        <div class="col-sm-12">
+            <div class="form-check">
+                <input [(ngModel)]="terminosYCondiciones" name="terminos" class="form-check-input" type="checkbox" id="flexCheckDefault" required>
+                <label class="form-check-label" for="flexCheckDefault">Acepto los términos y condiciones</label>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col">
+            <button class="btn btn-primary float-end">Guardar</button>
+        </div>
+    </div>
+</form>
+
+<h5>Valor del formulario:</h5>
+<pre>{{ miFormulario.value | json }}</pre>
+<br>
+<h5>Persona:</h5>
+<pre>{{ persona | json }}</pre>
+<br>
+<h5>Valid:</h5>
+<pre>{{ miFormulario.valid }}</pre>
+<br>
+<h5>Términos y condiciones:</h5>
+<pre>{{ miFormulario.controls['terminos']?.errors | json }}</pre>
+<br>

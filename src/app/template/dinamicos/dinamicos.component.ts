@@ -40,11 +40,11 @@ export class DinamicosComponent {
 
   public agregarFavorito() {
     const nuevoFavorito: Favorito = {
-      id: this.persona.favoritos.length + 1,
+      id: Math.random()*1000,
       nombre: this.favorito
     }
-    console.log('Favorito', nuevoFavorito)
-    this.persona.favoritos.push(nuevoFavorito);
+    this.persona.favoritos.push({...nuevoFavorito});
+    this.miFormulario?.controls['favorito'].reset();
   }
 
   public eliminar(index: number) {
